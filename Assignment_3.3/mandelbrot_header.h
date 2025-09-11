@@ -1,0 +1,1 @@
+double mandelbrotCalc (double a, double b);
