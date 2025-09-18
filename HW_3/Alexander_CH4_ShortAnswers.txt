@@ -1,0 +1,56 @@
+Chapter 4: Pointers, Short Answer Questions (6, 9, 12, 13) -
+
+6.) What is the difference between the * and & operators?
+
+    Answer: The * operator dereferences a pointer to return the actual stored value of
+    whatever variable is being referenced. The & operator is used to return the memory 
+    address of a variable rather than the stored value. 
+
+
+9.) Describe what each of the following declare:
+    (a) int* a
+    (b) const int b;
+    (c) const int* c;
+    (d) int* const d;
+    (e) const int* const e;
+    
+    Answer: (a) Declares a dereferenced integer value
+	    (b) Declares a constant integer value
+	    (c) Declares a constant dereferenced integer value
+	    (d) Declares a constant pointer value
+	    (e) Declares a constant dereferenced integer value, and a constant pointer
+                value
+
+12.) This code computes both the square and cube of a number. What is wrong with it and
+     how would you fix it?
+
+     double* powers(double x, double* x3_ptr) {
+
+     	double x2 = x*x;
+	*x3_ptr = x2*x;
+	return &x2;
+     }
+     
+     Answer: The code above attempts to return a pointer to the variable x2, but it is 
+             local to the function so x2 will no longer exist after the function ends.
+             Including the line "double* x2_ptr" in the function's parameters would fix the
+             error.
+
+13.) Sometimes when you call this function, you get a seg fault. In what line is the seg
+     fault occurring?
+
+     void twitchy(int n, int* out) {
+
+	int sum = 0;
+	for(int i=0; i<n; ++i) {
+	    if(i%2) sum += 5;
+	    else sum /= 2;
+	}
+
+    	*out = sum;
+     }
+
+     Answer: The seg fault can occur in the line "*out = sum;" because it can attempt to 
+             point to a null memory location. There should be a check prior to 
+             dereferencing to ensure the pointer is valid.
+
