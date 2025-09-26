@@ -1,0 +1,53 @@
+Chapter 5: Arrays, Short Answer Questions (1, 2, 5, 6, 13) -
+
+1.) Describe the difference between how Java and C++ handle arrays.
+
+    Answer: In java arrays are objects that hold the values and size of an array while 
+    making sure the index is valid when trying to access them. In C++ arrays are chunks of
+    memory and there is no built in validation feature to ensure the array is the right
+    index when trying to access it, so it is up to the programmer to handle that 
+    validation.
+
+2.) Suppose you have an array of 24 ints called list. What is another way to write list[6]?
+    
+    Answer: Another way to write list[6] to access the element is to use pointer arithmetic 
+    and write *(list + 6).
+
+5.) Suppose you have a function that takes an array as an argument in the usual way, which
+    is declared as:
+
+        void f(int* array, int length);
+
+    Suppose you also have an array declared as:
+
+        int a[128];
+
+    How would you pass a subarray containing only the third through sixth elements of a to 
+    the function f?   
+
+    Answer: To pass a subarray containing the 3rd-5th elements of a[128] you would write 
+    sort(a+2, 4);.
+
+6.) What is wrong with the following code and how would you fix it?
+
+    char copy[8];
+    const char* string = "hello";
+    for (int i = 0; string [i] != '\0'; ++i) {
+        copy [i] = string [i];
+    }
+
+    printf("%s\n", copy);
+    
+    Answer: The loop above is attempting to copy the string "hello" into the copy[8] array 
+    but the loop will keep executing because it is missing a null terminator so the line 
+    copy[i] = '\0'; should be added outside the loop. There is also a hole in the security 
+    because there are no checks for the allocated length of the string array. A size check 
+    should be added as i<size-1 in the for loop.
+
+13.) What is the difference between data allocated on the stack and data allocated on the 
+     heap?
+    
+    Answer: Data allocated on the stack will automatically delete variables when they go
+    out of scope of the stack size. Data allocated on the heap will stick around forever 
+    and can always be allocated if there is enough system memory and will only be removed 
+    if it is explicitly deleted.
