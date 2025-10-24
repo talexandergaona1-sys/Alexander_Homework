@@ -1,0 +1,47 @@
+Chapter 7: Libraries, Short Answer Questions (1, 2, 3, 4, 5) -
+
+1.) What are libraries good for?
+
+    Answer: Libraries are good for including and compiling previously created code with 
+    many object files into your own program in an easy/intuitive way from a single file.
+
+2.) What are the two types of libraries and how are they different?
+
+    Answer: The first type of library is a static library that is included in the program as 
+    if it were a part of the executable source code negating the need to include the 
+    library file. The second type is a shared object library that is separate from the 
+    program and is loaded in when the program executes allowing for one copy of the library 
+    to be included across multiple programs.
+
+3.) Why is it better to get a library from a package manager rather than compile it from 
+    source yourself? When might it be better to compile a library yourself?
+
+    Answer: Package managers keep libraries up to date and compatible with each other 
+    preventing a user from including two different versions of a library in one program or 
+    failing to include the dependencies of each. 
+
+4.) Suppose you are on macOS and you want to use a library in the file 
+    /usr/local/lib/libpng.dylib that has the accompanying header file 
+    /usr/local/include/png.h. Suppose also that your program consists of one file called 
+    main.cc. Write the makefile for this project.
+
+    Answer: CXX = g++
+
+	    CXXFLAGS = -I/usr/local/include       # Tell compiler where to find png.h
+	    LDFLAGS  = -L/usr/local/lib -lpng     # Link with libpng.dylib
+
+	    TARGET = main
+
+	    SRCS = main.cc
+
+	    $(TARGET): $(SRCS)
+		    $(CXX) $(SRCS) $(CXXFLAGS) $(LDFLAGS) -o $(TARGET)
+
+	    clean:
+		    rm -f $(TARGET)
+
+5.) What is a struct?
+
+    Answer: A struct is an object with no methods where all of its data is public and 
+    functions are created that take a struct as an argument creating a "poor man's" object 
+    oriented programming technique.
