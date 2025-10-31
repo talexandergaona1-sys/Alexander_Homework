@@ -1,0 +1,70 @@
+Chapter 8: Getting Started With C++, Short Answer Questions (1, 2, 3, 5, 10) -
+
+1.) What is wrong with the following code and how would you fix it?
+
+    #ifndef PROJECTILE_H
+    #define PROJECTILE_H
+
+    class Projectile {
+
+    private:
+        double position;
+        double velocity;
+
+    public:
+        Projectile(double position, double velocity);
+        virtual ~Projectile();
+
+        double getPosition() const;
+        double getVelocity() const;
+
+    } // end of Projectile class
+
+    #endif
+
+    Answer: The code above is missing the very important semicolon after the curly brace to 
+    end the class, need to add ";" to avoid errors.
+
+2.) The following is the definition of the constructor for the Projectile class above, but 
+    there are three things wrong with it. What are they and how would you fix them?
+
+    Projectile(int position, int velocity) {
+        this.position = position;
+        this.velocity = velocity;
+
+    } // end of constructor
+    
+    Answer: The code uses the incorrect operator to access pointers and is instead using 
+    the operator to access objects, it should instead be this->position & this->velocity. 
+    It also uses int in the parameters but the variables were both delcared as doubles in 
+    the class. Finally, it is missing the 'Projectile::' to indicate which class it belongs 
+    to.
+
+3.) Describe each of the following methods:
+    (a) int* method(int* arg);
+    (b) const int* method(int* arg);
+    (c) const int* const method(int* arg);
+    (d) const int* const method(const int* arg);
+    (e) const int* const method(const int* arg) const;
+
+    Answer: (a) Takes a pointer to an int and returns a pointer to an int
+    	    (b) Takes a pointer to an int and retuns a pointer to a const int
+    	    (c) Takes a pointer to an int and returns a const pointer to a const int
+    	    (d) Takes a pointer to a const int and returns a const pointer to a const int
+    	    (e) Takes a pointer to a const int and returns a const pointer to a const int 
+	    and includes a trailing const keeping the method from modifying any variables 
+	    of the class it belongs to.
+
+5.) What is the difference between a pointer and a reference?
+    
+    Answer: References are automatically dereferenced, after a reference is initialized it 
+    cannot change what it points to, and when a reference is declared it has to be 
+    initialized to point to a valid variable.
+
+10.) Why would you never declare a method like this?
+        
+        void method(const int value);
+    
+    Answer: The const in the parameter is unnecessary. When a primitive value (int) is 
+    passed the function will get a copy of the original variable so const will only affect 
+    the local copy.
