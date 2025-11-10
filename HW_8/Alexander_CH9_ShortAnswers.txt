@@ -1,0 +1,53 @@
+Chapter 9: Memory Management, Short Answer Questions (2, 5, 8, 12, 13) -
+
+2.) Describe ownership management as it pertains to C++ memory management.
+
+    Answer: In C++ ownership management is done by assigning an object as the owner of a 
+    piece of data. That makes it so the owner is responsible for also deleting the data 
+    when a pointer is passed to it as long as that object becomes the owner.
+     
+
+5.) What is wrong with the following code?
+
+    Car& Factory::makeACar() {
+
+        Car c;
+        return c;
+    }	
+    
+    Answer: The code is attempting to return a reference to a local variable that is a 
+    part of the stack memory so it will go out of scope and the reference will have 
+    nothing to point to. 
+
+8.) What is the difference between copying and moving an object?
+
+    Answer: Copying an object will copy all values of the original object and create a new
+    one that is the exact same as the original. Moving an object transfers the ownership
+    by copying the pointers of the original while changing the original so that it loses 
+    ownership.
+
+12.) When would you need to use a forwards declaration? 
+    
+    Answer: Forward declarations are used when multiple classes are used in a single 
+    program and the compiler needs to know about all the classes. Using an #include header
+    within a header file will result in an infinite recursion so programmers use a forward
+    declaration instead by writing something like "class X;" within the header file.
+
+13.) What is wrong with the following code and how would you fix it?
+
+    class Part;
+
+    class Whole {
+
+    private:
+        Part p;
+
+    public:
+        Whole();
+        virtual -Whole();
+
+    } // end of Whole class
+
+    Answer: The code is implementing a forward declaration for the class "Part", but 
+    forward declarations are used for pointers or references. This would need to use an 
+    "#include Part.h" statement instead.
