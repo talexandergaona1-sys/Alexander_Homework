@@ -1,0 +1,62 @@
+Chapter 10: Inheritance, Short Answer Questions (2, 4, 6, 7, 9) -
+
+2.) Why would you mark a method as virtual? Why wouldn't you?
+
+    Answer: You would mark a method as virtual to have a subclass override a 
+    superclass method. Marking methods as virtual does come with a performance 
+    hit though, so if you wanted to be as memory efficient as possible you would 
+    try to avoid marking every single method as virtual. 
+
+4.) What is the difference between a dynamic cast a static cast? Why would you use one over 
+    over the other? 
+
+    Answer: Dynamic casting takes the type of an object and checks to see if it 
+    can be cast to the requested type. Static cast does checks at compile time 
+    but it does not check object type at runtime. Using dynamic casting is safe 
+    because it takes the time to check each inheritance and ensure it is being 
+    passed to a valid type making it slower, but if you are certain your casting 
+    is valid you can use static cast to gain an increase in speeds.
+
+6.) Suppose you have a Fruit base class and a Banana subclass. Suppose you have a Banana 
+    object declared like this:
+
+        Banana b;
+
+    What is the difference between what happens when you pass your Banana to a method 
+    declared like this:
+
+        void eat(Fruit f);
+
+    vs. one declared like this:
+    
+        void eat(const Fruit f);
+
+    Answer: The first method makes a non const copy of the Banana object and slices it into 
+    a Fruit object and can be modified within the local scope. The second method does the 
+    same steps by taking a copy of the Banana and slicing it into a Fruit object, but this 
+    copy is const and cannot be modified within the function.  
+
+7.) Suppose you have a Rectangle class, which is a subclass of Quadrilateral, which is a 
+    subclass of Shape. Now suppose you have a variable declared as
+
+        Shape* s;
+
+    Write an if statement that determines whether s is actually a pointer to Quadrilateral.
+    
+    Answer: if (dynamic_cast<Quadrilateral*>(s) == nullptr) {
+                std::cout << "Not a shape"<<std::end1;
+            } else {
+                std::cout << "Is a shape"<<std::end1;
+            }
+
+9.) Suppose you have an Exception class. What is wrong with the following code and how 
+    would you fix it?
+
+        try {
+            // some code here that might throw an exception
+        } catch(Exception e) {
+            std::cerr << "Error: "<<e.what()<<std::end1;
+        }
+
+    Answer: The code is forcing a copy of the exception instead of catching the exception 
+    using a reference. The fix is to instead use "catch(Exception& e)". 
