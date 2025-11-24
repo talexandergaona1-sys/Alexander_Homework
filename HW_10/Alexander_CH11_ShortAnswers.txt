@@ -1,0 +1,29 @@
+Chapter 11: Templates, Short Answer Questions (1, 2, 5, 7, 8) -
+
+1.) What is a template?
+
+    Answer: A template holds classes and functions with unspecified data types so that it can
+    be used at a later time where the known data types can be placed in. 
+
+2.) What is the fundamental difference between how Java and C++ implement collections?
+    
+    Answer: Java implements collections with a special framework that has an iterator that will
+    iterate through collections while C++ uses a set of template classes called STL that is a 
+    library of container classes with iterators. 
+
+5.) What is an iterator?
+
+    Answer: Iterators are classes that act as the current element or pointer that allows you
+    to step through your elements. 
+
+7.) What is the difference between the meaning of angle brackets (<>) in a Java generic and in
+    a C++ template instantiation?
+    
+    Answer: Angle brackets in Java are used for type checking so the compiler can auto cast 
+    at compile time while angle brackets in C++ are for creating new classes for custom 
+    written types.
+
+8.) Why can't you store references in a container?
+    
+    Answer: References can't be stored in containers because they are not objects so they can't
+    be reassigned or uninitialized.
